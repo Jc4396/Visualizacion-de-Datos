@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Actividad 8. Ejercicio</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+      // Gráfico 1: Línea - Pobreza
+      var data1 = google.visualization.arrayToDataTable([
+        ['Año', 'Pobreza', 'Pobreza Extrema'],
+        ['2008', 44.4, 11.0],
+        ['2010', 46.1, 11.3],
+        ['2012', 45.5, 9.8],
+        ['2014', 46.2, 9.5],
+        ['2016', 43.6, 7.6],
+        ['2018', 41.9, 7.4]
+      ]);
+
+      var options1 = {
+        title: 'Evolución de la Pobreza (2008–2018)',
+        curveType: 'function',
+        legend: { position: 'bottom' }
+      };
+
+      new google.visualization.LineChart(document.getElementById('grafico1')).draw(data1, options1);
+
+      // Gráfico 2: Columnas - Estados
+      var data2 = google.visualization.arrayToDataTable([
+        ['Entidad', 'Pobreza (%)'],
+        ['Chiapas', 76.4],
+        ['Guerrero', 66.5],
+        ['Oaxaca', 66.4],
+        ['Veracruz', 61.8],
+        ['Puebla', 58.9],
+        ['CDMX', 30.6]
+      ]);
+
+      var options2 = {
+        title: 'Porcentaje de Pobreza por Entidad Federativa (2018)',
+        legend: { position: 'none' },
+        hAxis: { title: 'Entidad' },
+        vAxis: { title: 'Pobreza (%)' }
+      };
+
+      new google.visualization.ColumnChart(document.getElementById('grafico2')).draw(data2, options2);
+
+      // Gráfico 3: Columnas - Carencias sociales
+      var data3 = google.visualization.arrayToDataTable([
+        ['Año', 'Seguridad social', 'Servicios de salud', 'Rezago Educativo', 'Alimentación', 'Vivienda', 'Servicios básicos'],
+        ['2008', 65.0, 38.4, 21.9, 21.7, 17.7, 22.9],
+        ['2010', 60.7, 29.2, 20.7, 24.8, 15.2, 22.9],
+        ['2012', 61.2, 21.5, 19.2, 23.3, 13.6, 21.2],
+        ['2014', 58.5, 18.2, 18.7, 23.4, 12.3, 21.2],
+        ['2016', 55.8, 15.5, 17.4, 20.1, 12.0, 19.3],
+        ['2018', 57.3, 16.2, 16.9, 20.4, 11.1, 19.8]
+      ]);
+
+      var options3 = {
+        title: 'Porcentaje de Carencias Sociales (2008 - 2018)',
+        curveType: 'function',
+        legend: { position: 'none' },
+        hAxis: { title: 'Carencia' },
+        vAxis: { title: 'Porcentaje (%)' }
+      };
+
+      new google.visualization.LineChart(document.getElementById('grafico3')).draw(data3, options3);
+
+      // Gráfico 4: Barras horizontales - Seguridad social
+      var data4 = google.visualization.arrayToDataTable([
+        ['Año', 'Sin acceso a seguridad social (%)'],
+        ['2008', 65.0],
+        ['2018', 57.3]
+      ]);
+
+      var options4 = {
+        title: 'Porcentaje Sin Acceso a Seguridad Social (2008 vs 2018)',
+        bars: 'horizontal',
+        hAxis: { title: 'Porcentaje' },
+        vAxis: { title: 'Año' }
+      };
+
+      new google.charts.Bar(document.getElementById('grafico4')).draw(data4, google.charts.Bar.convertOptions(options4));
+
+      // Gráfico 5: Área - Vulnerabilidad
+      var data5 = google.visualization.arrayToDataTable([
+        ['Año', 'Vulnerable por carencias', 'Vulnerable por ingresos'],
+        ['2008', 24.7, 4.5],
+        ['2010', 25.0, 4.2],
+        ['2012', 24.9, 4.3],
+        ['2014', 23.3, 5.8],
+        ['2016', 23.0, 6.2],
+        ['2018', 20.0, 7.0]
+      ]);
+
+      var options5 = {
+        title: 'Evolución de población vulnerable (2008–2018)',
+        isStacked: true,
+        areaOpacity: 0.4,
+        hAxis: { title: 'Año' },
+        vAxis: { title: 'Porcentaje' }
+      };
+
+      new google.visualization.AreaChart(document.getElementById('grafico5')).draw(data5, options5);
+    }
+  </script>
+</head>
+<body>
+  <h1>Actividad 8. Ejercicio</h1>
+  <h2>Dashboard - CONEVAL (2019)</h2>
+  <div id="grafico1" style="width: 900px; height: 500px;"></div>
+  <div id="grafico2" style="width: 900px; height: 500px;"></div>
+  <div id="grafico3" style="width: 900px; height: 500px;"></div>
+  <div id="grafico4" style="width: 900px; height: 500px;"></div>
+  <div id="grafico5" style="width: 900px; height: 500px;"></div>
+</body>
+</html>
